@@ -7,7 +7,7 @@ from kivy.uix.button import Button
 from kivy.uix.label import Label
 from kivy.uix.scrollview import ScrollView
 
-# Solução para o driver gráfico no Linux com NVIDIA
+
 os.environ['KIVY_GL_BACKEND'] = 'gl'
 
 
@@ -31,13 +31,13 @@ class GestorTarefasApp(App):
         layout_principal.add_widget(layout_input)
         layout_principal.add_widget(scroll_view_tarefas)
 
-        # Chama a função para carregar as tarefas no início
+        
         self.carregar_tarefas()
 
         return layout_principal
 
     def carregar_tarefas(self, *args):
-        # A "ARMADURA" DE DEBUG: Tenta executar o código abaixo
+        
         try:
             if not os.path.exists("tarefas.json"):
                 return  # Ficheiro não existe, não faz nada
@@ -59,9 +59,9 @@ class GestorTarefasApp(App):
                 self.layout_lista_tarefas.add_widget(tarefa_layout)
                 botao_remover.bind(on_press=lambda instance, layout=tarefa_layout: self.remover_tarefa(layout))
 
-        # Se QUALQUER erro acontecer acima, a rede de segurança "except" apanha-o
+        
         except Exception as e:
-            # E imprime uma mensagem de erro clara no terminal
+           
             print(f"DEBUG: OCORREU UM ERRO AO CARREGAR AS TAREFAS: {e}")
 
     def salvar_tarefas(self, *args):
